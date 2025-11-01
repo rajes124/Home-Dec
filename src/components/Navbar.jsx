@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // 🔹 তোমার লোগো assets ফোল্ডারে
+import logo from "../assets/logo.png";
 
 function Navbar() {
   return (
@@ -19,13 +19,64 @@ function Navbar() {
       <div className="flex-1 flex justify-center">
         <ul className="menu menu-horizontal px-1 text-[16px] font-medium">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="flex items-center gap-1">
+              {/* Home icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-5H9v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9z"
+                />
+              </svg>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/apps">Apps</Link>
+            <Link to="/apps" className="flex items-center gap-1">
+              {/* Apps icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              Apps
+            </Link>
           </li>
           <li>
-            <Link to="/installation">Installation</Link>
+            <Link to="/installation" className="flex items-center gap-1">
+              {/* Installation icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v8m4-4H8"
+                />
+              </svg>
+              Installation
+            </Link>
           </li>
         </ul>
       </div>
@@ -34,7 +85,7 @@ function Navbar() {
       <div className="flex-none">
         <a
           href="#"
-          className="btn btn-primary px-5 font-semibold gap-2 normal-case"
+          className="btn btn-primary px-5 font-semibold gap-2 normal-case flex items-center"
         >
           {/* GitHub icon */}
           <svg
