@@ -1,14 +1,18 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import logo from "../assets/logo.png"; // same logo as Navbar
 
 function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-10 mt-10">
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-        {/* Logo / Name */}
-        <div className="text-center md:text-left">
-          <h1 className="text-2xl font-bold mb-2">Home-Dec</h1>
-          <p className="text-gray-400">© 2025 Home-Dec. All rights reserved.</p>
+        {/* Logo Section */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex items-center gap-2 mb-2">
+            <img src={logo} alt="Logo" className="w-10 h-10" />
+            <span className="text-xl font-semibold tracking-wide">Home-Dec</span>
+          </div>
+          <p className="text-gray-400">Innovating Apps for Everyone 🚀</p>
         </div>
 
         {/* Social Icons */}
@@ -40,8 +44,13 @@ function Footer() {
         </div>
       </div>
 
-      {/* Decorative animation line */}
-      <div className="mt-6 h-1 w-24 bg-purple-600 rounded-full mx-auto animate-pulse"></div>
+      {/* Divider Line */}
+      <div className="mt-6 h-[1px] bg-gray-700 w-full"></div>
+
+      {/* Copyright Section */}
+      <div className="text-center mt-4 text-gray-400 text-sm">
+        © {new Date().getFullYear()} <span className="font-semibold text-white">Home-Dec</span>. All rights reserved.
+      </div>
     </footer>
   );
 }

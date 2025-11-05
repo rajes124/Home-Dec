@@ -23,7 +23,7 @@ const trendingApps = [
 
 const Home = () => {
   return (
-    <div className="text-center bg-white">
+    <div className="text-center bg-blue-400">
       {/*  Hero + Stats Section */}
       <div className="relative w-full bg-white">
         <div className="text-center pt-16 pb-10">

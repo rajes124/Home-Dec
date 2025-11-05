@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 
 function Navbar() {
   return (
-    <div className="navbar bg-base-100 shadow-md px-8">
+    <div className="navbar bg-blue-100 shadow-md px-8">
       {/* Left side - Logo */}
       <div className="flex-none">
         <Link
