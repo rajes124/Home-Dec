@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import React, { useState } from "react";
 import { Search, Download } from "lucide-react";
+import { useNavigate } from "react-router-dom"; // ✅ Add this line
 
 // 🔹 Image Imports
 import demoapp1 from "../assets/demo-app-1.png";
@@ -43,13 +44,15 @@ const allApps = [
 
 const Apps = () => {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate(); // ✅ Add this line
 
   const filteredApps = allApps.filter((app) =>
     app.title.toLowerCase().includes(search.toLowerCase())
   );
 
   // ✅ Download handler (save to localStorage)
-  const handleDownload = (app) => {
+  const handleDownload = (app, e) => {
+    e.stopPropagation(); // ✅ prevent triggering card click
     const installed = JSON.parse(localStorage.getItem("installedApps")) || [];
     if (!installed.find((a) => a.id === app.id)) {
       installed.push(app);
@@ -94,6 +97,7 @@ const Apps = () => {
           {filteredApps.map((app) => (
             <div
               key={app.id}
+              onClick={() => navigate(`/app/${app.id}`)} // ✅ navigate to details page
               className="bg-white border rounded-lg shadow-sm hover:shadow-2xl p-3 transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105 cursor-pointer"
             >
               <img
@@ -107,7 +111,7 @@ const Apps = () => {
               <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
               <div className="flex justify-between text-sm text-gray-600">
                 <span
-                  onClick={() => handleDownload(app)}
+                  onClick={(e) => handleDownload(app, e)} // ✅ download without page open
                   className="flex items-center gap-1 text-green-600 cursor-pointer hover:text-emerald-700 transition"
                 >
                   <Download className="w-4 h-4" />{" "}
