@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import hero from "../assets/hero.png";
+
+import heroImg from "../assets/hero.png";
+
+
 import demoapp1 from "../assets/demo-app-1.png";
 import demoapp2 from "../assets/demo-app-2.png";
 import demoapp3 from "../assets/demo-app-3.png";
@@ -25,9 +28,79 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
+
+
+
+
+    
     <div className="text-center bg-blue-400">
       {/* Hero and stats sections same as before */}
       
+      <section className="w-full bg-white py-20 px-6 md:px-16">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            We Build <span className="text-purple-600">Productive</span> Apps
+          </h2>
+
+          <p className="text-gray-600 mt-5 max-w-2xl mx-auto">
+            At HERO.IO, we craft innovative apps designed to make everyday life
+            simpler, smarter, and more exciting. Our goal is to turn your ideas
+            into digital experiences that truly make an impact.
+          </p>
+
+          {/* Download Buttons */}
+          <div className="flex justify-center gap-4 mt-6">
+            <button className="bg-black text-white px-5 py-2 rounded-xl hover:opacity-80 transition">
+              Google Play
+            </button>
+            <button className="bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition">
+              App Store
+            </button>
+          </div>
+
+          {/* Main Hero Image */}
+  <div className="relative w-full flex justify-center mt-16">
+  <img
+    src={heroImg}
+    alt="hero mobile mockup"
+    className="w-[320px] md:w-[380px] lg:w-[420px] h-auto drop-shadow-2xl
+               relative z-20 -mb-16" 
+  />
+</div>
+
+        </div>
+      </section>
+
+      {/* STATS SECTION */}
+      <section className="w-full bg-purple-600 text-white py-16 px-6 md:px-20">
+        <h2 className="text-center text-2xl md:text-3xl font-bold">
+          Trusted By Millions, Built For You
+        </h2>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center mt-12">
+          {/* Stat Item */}
+          <div>
+            <h3 className="text-4xl font-extrabold">29.6M</h3>
+            <p className="mt-1 opacity-80">Total Downloads</p>
+            <p className="text-sm mt-1">21% More Than Last Month</p>
+          </div>
+
+          {/* Stat Item */}
+          <div>
+            <h3 className="text-4xl font-extrabold">906K</h3>
+            <p className="mt-1 opacity-80">Total Reviews</p>
+            <p className="text-sm mt-1">46% More Than Last Month</p>
+          </div>
+
+          {/* Stat Item */}
+          <div>
+            <h3 className="text-4xl font-extrabold">132+</h3>
+            <p className="mt-1 opacity-80">Active Apps</p>
+            <p className="text-sm mt-1">31 More Will Launch</p>
+          </div>
+        </div>
+      </section>
+
       {/* Trending Apps Section */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
