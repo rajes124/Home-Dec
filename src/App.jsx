@@ -7,7 +7,7 @@ function App() {
     <div>
       <Navbar />
       <main style={{ minHeight: "80vh" }}>
-        <Outlet /> {/* এখানে Home, Apps, Installation পেজ show হবে */}
+        <Outlet /> 
       </main>
       <Footer />
     </div>

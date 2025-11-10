@@ -34,7 +34,7 @@ const Home = () => {
 
     
     <div className="text-center bg-blue-400">
-      {/* Hero and stats sections same as before */}
+    
       
     <section className="w-full bg-white py-20 px-6 md:px-16">
         <div className="max-w-5xl mx-auto text-center">
@@ -127,7 +127,7 @@ const Home = () => {
                 </h3>
                 <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
                 
-                {/* এখানে পরিবর্তন করা হয়েছে */}
+                
                 <div className="flex justify-between text-sm text-gray-600">
                   <span className="flex items-center gap-1 text-green-600">
                     ⬇ {app.downloads >= 1000000000 

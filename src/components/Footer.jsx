@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import logo from "../assets/logo.png"; // same logo as Navbar
+import logo from "../assets/logo.png"; 
 
 function Footer() {
   return (
@@ -44,10 +44,10 @@ function Footer() {
         </div>
       </div>
 
-      {/* Divider Line */}
+    
       <div className="mt-6 h-[1px] bg-gray-700 w-full"></div>
 
-      {/* Copyright Section */}
+     
       <div className="text-center mt-4 text-gray-400 text-sm">
         © {new Date().getFullYear()} <span className="font-semibold text-white">Home-Dec</span>. All rights reserved.
       </div>

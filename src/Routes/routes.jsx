@@ -3,12 +3,11 @@ import App from "../App.jsx";
 import Home from "../Pages/Home.jsx";
 import Apps from "../Pages/Apps.jsx";
 import Installation from "../Pages/Installation.jsx";
-import AppDetails from "../Pages/AppDetails.jsx"; // ✅ নতুন import
-
+import AppDetails from "../Pages/AppDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />, // Layout (Navbar, Footer)
+    element: <App />,
     children: [
       {
         path: "/",
@@ -23,7 +22,7 @@ const router = createBrowserRouter([
         element: <Installation />,
       },
       {
-        path: "/app/:id", // ✅ নতুন Route for details page
+        path: "/app/:id", 
         element: <AppDetails />,
       },
     ],

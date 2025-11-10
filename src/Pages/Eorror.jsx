@@ -7,16 +7,17 @@ const Error = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-6">
-      <h1 className="text-4xl font-bold mb-4">Oops!</h1>
-      <p className="text-lg text-gray-700 mb-2">
-        {error?.statusText || "Something went wrong."}
+      <h1 className="text-5xl font-extrabold mb-4 text-red-500">Oops! 😢</h1>
+      <p className="text-xl text-gray-700 mb-2">
+        {error?.statusText || "The page you are looking for does not exist."}
       </p>
-      <p className="text-gray-500 mb-6">{error?.status || 404}</p>
+      <p className="text-gray-500 mb-6 text-lg">{error?.status || 404}</p>
+
       <Link
         to="/"
-        className="px-6 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition"
+        className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition font-semibold"
       >
-        Go Home
+        🏠 Go Back Home
       </Link>
     </div>
   );

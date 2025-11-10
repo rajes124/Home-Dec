@@ -1,4 +1,4 @@
-// AppDetails.jsx
+
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
@@ -6,7 +6,7 @@ import { Bar } from "react-chartjs-2";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// 🔹 Import all app images
+//  Import all app images
 import demoapp1 from "../assets/demo-app-1.png";
 import demoapp2 from "../assets/demo-app-2.png";
 import demoapp3 from "../assets/demo-app-3.png";
@@ -24,7 +24,7 @@ import demoapp14 from "../assets/demo-app-14.png";
 import demoapp15 from "../assets/demo-app-15.png";
 import demoapp16 from "../assets/demo-app-16.png";
 
-// 🔹 All Apps Data
+//  All Apps Data
 const allApps = [
   { id: 1, image: demoapp1, title: "Forest: Focus For Productivity", companyName: "Forest Studio", size: 42, ratingAvg: 5, downloads: 9000000 },
   { id: 2, image: demoapp2, title: "Canva: Design Anything", companyName: "Canva Ltd.", size: 50, ratingAvg: 4.9, downloads: 20000000 },
@@ -50,7 +50,7 @@ const AppDetails = () => {
   const { id } = useParams();
   const app = allApps.find(a => a.id === Number(id));
   const [isInstalled, setIsInstalled] = useState(false);
-  const chartRef = useRef(null); // ✅ Ref for Chart
+  const chartRef = useRef(null); // ✅
 
   useEffect(() => {
     const installed = JSON.parse(localStorage.getItem("installedApps")) || [];
@@ -58,7 +58,7 @@ const AppDetails = () => {
       setIsInstalled(true);
     }
 
-    // Cleanup chart on unmount
+    
     return () => {
       if (chartRef.current) {
         chartRef.current.destroy();
@@ -130,8 +130,8 @@ const AppDetails = () => {
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-3">Ratings</h3>
         <Bar
-          ref={chartRef} // ✅ Ref added
-          key={JSON.stringify(ratingData)} // ✅ Key ensures new canvas on data change
+          ref={chartRef} 
+          key={JSON.stringify(ratingData)} 
           data={ratingData}
           options={ratingOptions}
           height={150}

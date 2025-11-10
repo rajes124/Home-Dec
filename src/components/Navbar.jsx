@@ -14,7 +14,7 @@ function Navbar() {
           <span>HERO.IO</span>
         </Link>
 
-        {/* Hamburger Button (Mobile) */}
+        {/* Button (Mobile) */}
         <button
           className="sm:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -73,7 +73,7 @@ function Navbar() {
           </li>
         </ul>
 
-        {/* Right Button (Desktop) */}
+        
         <div className="hidden sm:flex">
           <a
             href="#"

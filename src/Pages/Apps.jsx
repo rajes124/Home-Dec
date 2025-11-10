@@ -1,10 +1,10 @@
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Search, Download } from "lucide-react";
-import { useNavigate } from "react-router-dom"; // ✅ Add this line
+import { useNavigate } from "react-router-dom";
 
-// 🔹 Image Imports
+//  Image Imports
 import demoapp1 from "../assets/demo-app-1.png";
 import demoapp2 from "../assets/demo-app-2.png";
 import demoapp3 from "../assets/demo-app-3.png";
@@ -22,7 +22,7 @@ import demoapp14 from "../assets/demo-app-14.png";
 import demoapp15 from "../assets/demo-app-15.png";
 import demoapp16 from "../assets/demo-app-16.png";
 
-// 🔹 All Apps Data
+//  All Apps Data
 const allApps = [
   { id: 1, image: demoapp1, title: "Forest: Focus For Productivity", companyName: "Forest Studio", size: 42, ratingAvg: 5, downloads: 9000000 },
   { id: 2, image: demoapp2, title: "Canva: Design Anything", companyName: "Canva Ltd.", size: 50, ratingAvg: 4.9, downloads: 20000000 },
@@ -44,15 +44,16 @@ const allApps = [
 
 const Apps = () => {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate(); // ✅ Add this line
+  const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate();
 
   const filteredApps = allApps.filter((app) =>
     app.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  // ✅ Download handler (save to localStorage)
+  
   const handleDownload = (app, e) => {
-    e.stopPropagation(); // ✅ prevent triggering card click
+    e.stopPropagation();
     const installed = JSON.parse(localStorage.getItem("installedApps")) || [];
     if (!installed.find((a) => a.id === app.id)) {
       installed.push(app);
@@ -63,20 +64,35 @@ const Apps = () => {
     }
   };
 
+  
+  const handleNavigate = (id) => {
+    setLoading(true);
+    setTimeout(() => {
+      navigate(`/app/${id}`);
+    }, 500); 
+  };
+
+ 
+  useEffect(() => {
+    if (search) {
+      setLoading(true);
+      const timer = setTimeout(() => setLoading(false), 300); g
+      return () => clearTimeout(timer);
+    } else {
+      setLoading(false);
+    }
+  }, [search]);
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold text-center mb-2">
-        Our All Applications
-      </h2>
+      <h2 className="text-3xl font-bold text-center mb-2">Our All Applications</h2>
       <p className="text-center text-gray-500 mb-8">
         Explore All Apps on the Market developed by us. We code for Millions
       </p>
 
-      {/* 🔍 Search Bar */}
+      {/*  Search Bar */}
       <div className="flex justify-between items-center mb-6">
-        <p className="font-semibold text-gray-700">
-          ({filteredApps.length}) Apps Found
-        </p>
+        <p className="font-semibold text-gray-700">({filteredApps.length}) Apps Found</p>
         <div className="relative">
           <Search className="absolute left-3 top-2.5 text-gray-400 w-5 h-5" />
           <input
@@ -89,41 +105,47 @@ const Apps = () => {
         </div>
       </div>
 
-      {/* 🧩 App Cards */}
-      {filteredApps.length === 0 ? (
-        <p className="text-center text-gray-500">No App Found</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredApps.map((app) => (
-            <div
-              key={app.id}
-              onClick={() => navigate(`/app/${app.id}`)} // ✅ navigate to details page
-              className="bg-white border rounded-lg shadow-sm hover:shadow-2xl p-3 transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105 cursor-pointer"
-            >
-              <img
-                src={app.image}
-                alt={app.title}
-                className="rounded-lg w-full h-48 object-cover mb-3 transition-transform duration-300 ease-out hover:scale-110"
-              />
-              <h3 className="font-semibold text-gray-800 text-base mb-1">
-                {app.title}
-              </h3>
-              <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
-              <div className="flex justify-between text-sm text-gray-600">
-                <span
-                  onClick={(e) => handleDownload(app, e)} // ✅ download without page open
-                  className="flex items-center gap-1 text-green-600 cursor-pointer hover:text-emerald-700 transition"
-                >
-                  <Download className="w-4 h-4" />{" "}
-                  {Math.floor(app.downloads / 1000000)}M
-                </span>
-                <span className="flex items-center gap-1 text-orange-500">
-                  ⭐ {app.ratingAvg}
-                </span>
-              </div>
-            </div>
-          ))}
+      {/*  Loading Animation */}
+      {loading && (
+        <div className="flex justify-center my-8">
+          <div className="w-12 h-12 border-4 border-purple-500 border-dashed rounded-full animate-spin"></div>
         </div>
+      )}
+
+      {/*  App Cards */}
+      {!loading && (
+        filteredApps.length === 0 ? (
+          <p className="text-center text-gray-500">No App Found</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filteredApps.map((app) => (
+              <div
+                key={app.id}
+                onClick={() => handleNavigate(app.id)}
+                className="bg-white border rounded-lg shadow-sm hover:shadow-2xl p-3 transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105 cursor-pointer"
+              >
+                <img
+                  src={app.image}
+                  alt={app.title}
+                  className="rounded-lg w-full h-48 object-cover mb-3 transition-transform duration-300 ease-out hover:scale-110"
+                />
+                <h3 className="font-semibold text-gray-800 text-base mb-1">{app.title}</h3>
+                <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
+                <div className="flex justify-between text-sm text-gray-600">
+                  <span
+                    onClick={(e) => handleDownload(app, e)}
+                    className="flex items-center gap-1 text-green-600 cursor-pointer hover:text-emerald-700 transition"
+                  >
+                    <Download className="w-4 h-4" /> {Math.floor(app.downloads / 1000000)}M
+                  </span>
+                  <span className="flex items-center gap-1 text-orange-500">
+                    ⭐ {app.ratingAvg}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )
       )}
     </div>
   );

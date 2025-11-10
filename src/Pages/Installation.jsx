@@ -10,14 +10,14 @@ function Installation() {
     setApps(installed);
   }, []);
 
-  // ✅ Uninstall handler
+  //  Uninstall handler
   const handleUninstall = (id) => {
     const updated = apps.filter((app) => app.id !== id);
     setApps(updated);
     localStorage.setItem("installedApps", JSON.stringify(updated));
   };
 
-  // ✅ Sorting Logic
+  
   const sortedApps = [...apps].sort((a, b) => {
     if (sortType === "name") {
       return a.title.localeCompare(b.title);
